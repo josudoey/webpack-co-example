@@ -19,6 +19,7 @@ var config = module.exports = {
       filename: "[name].js"
     },
     resolve: {
+      extensions: ['', '.js', '.vue'],
       alias: {
         app: projectPath + "/src/app",
         vue: 'vue/dist/vue.js'
@@ -32,15 +33,26 @@ var config = module.exports = {
         test: /\.css$/,
         loader: "style-loader!css-loader"
       }, {
-        test: /\.(woff|svg|ttf|eot)([\?]?.*)$/,
-        loader: "file-loader?name=[name].[ext]"
-      }, {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'regenerator-loader'
       }, {
         test: /\.vue$/,
         loader: 'vue-loader'
+      }, {
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        loader: 'url',
+        query: {
+          limit: 10000,
+          name: 'img/[name].[hash:7].[ext]'
+        }
+      }, {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'url',
+        query: {
+          limit: 10000,
+          name: 'fonts/[name].[hash:7].[ext]'
+        }
       }]
     },
     plugins: [
