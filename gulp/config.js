@@ -22,7 +22,7 @@ var config = module.exports = {
       extensions: ['', '.js', '.vue'],
       alias: {
         app: projectPath + "/src/app",
-        vue: 'vue/dist/vue.js'
+        vue: (process.env.NODE_ENV !== 'production') ? 'vue/dist/vue.js' : 'vue/dist/vue.min.js'
       }
     },
     module: {
@@ -63,7 +63,7 @@ var config = module.exports = {
         }
       })
     ],
-    devtool: 'source-map'
+    devtool: (process.env.NODE_ENV !== 'production') ? 'source-map' : null
   },
   "webpack-dev-server": {
     contentBase: contentBase,

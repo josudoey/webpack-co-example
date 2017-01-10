@@ -1,3 +1,4 @@
+var Vue = require("vue");
 var co = require("co");
 var delay = function (ms) {
   return new Promise(function (resolve) {
@@ -5,7 +6,6 @@ var delay = function (ms) {
   })
 }
 
-var Vue = require("vue");
 var vm = new Vue({
   template: require("./template.html"),
   data: function () {
